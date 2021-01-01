@@ -9,7 +9,11 @@ namespace CarRentingSystem.Models.Concretes
 {
     public class Vehicle
     {
-        public byte Id { get; set; }
+        public Vehicle()
+        {
+            PrevRentList = new List<RentInfo>();
+        }
+        public int Id { get; set; }
         public string Brand { get; set; }
         public string ModelName { get; set; }
         public ushort ModelYear { get; set; }
@@ -23,10 +27,10 @@ namespace CarRentingSystem.Models.Concretes
         public byte VolumeOfLuggage { get; set; }
         public byte AmountOfSeat { get; set; }
         public ushort DailyRentPrice { get; set; }
-        public byte CompanyId { get; set; }
+        public int CompanyId { get; set; }
 
         public Company Company { get; set; }
-        public List<Customer> PrevCustomers { get; set; }
+        public List<RentInfo> PrevRentList { get; set; }
 
     }
 }

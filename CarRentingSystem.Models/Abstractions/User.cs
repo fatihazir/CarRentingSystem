@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace CarRentingSystem.Models.Concretes
 {
-    public abstract class User : Customer
+    public abstract class User : Human
     {
         public ushort Salary { get; set; }
         public string Username { get; set; }
         private string Password { get; set; }
-        public bool CanEditContents { get; set; }
+        public int CompanyId { get; set; }
+        public Company Company { get; set; }
 
     }
 }

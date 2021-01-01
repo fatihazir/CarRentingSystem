@@ -8,12 +8,12 @@ namespace CarRentingSystem.Models.Concretes
 {
     public class ReservationInfo
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
         public DateTime BeginningOfRenting { get; set; }
         public DateTime EndingOfRenting { get; set; }
         public ushort PriceOfRenting { get; set; }
-        public byte VehicleId { get; set; }
-        public byte CustomerId { get; set; }
+        public int VehicleId { get; set; }
+        public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         public Vehicle Vehicle { get; set; }
     }

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace CarRentingSystem.Models.Concretes
 {
-    public class RentedInfo : ReservationInfo
+    public class RentInfo : ReservationInfo
     {
-        public byte Id { get; set; }
         public ushort BeginningKmOfVehicle { get; set; }
         public ushort EndingKmOfVehicle { get; set; }
-        public byte StaffId { get; set; }
+        public int StaffId { get; set; }
         public Staff Staff { get; set; }
+        
 
     }
 }

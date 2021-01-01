@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarRentingSystem.Models.Concretes
+namespace CarRentingSystem.Test
 {
-    public class Staff : User
+    public class DataInitializer : DropCreateDatabaseAlways<DataContext>
     {
-        public int Id { get; set; }
+
     }
 }

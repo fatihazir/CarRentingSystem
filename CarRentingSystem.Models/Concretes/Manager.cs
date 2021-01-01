@@ -9,7 +9,6 @@ namespace CarRentingSystem.Models.Concretes
 {
     public class Manager : User
     {
-        public byte Id { get; set; }
-        public List<Staff> StaffList { get; set; }
+        public int Id { get; set; }
     }
 }
