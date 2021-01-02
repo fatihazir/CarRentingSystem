@@ -11,7 +11,7 @@ namespace CarRentingSystem.Models.Concretes
     {
         public Vehicle()
         {
-            PrevRentList = new List<RentInfo>();
+           // PrevRentList = new List<RentInfo>();
         }
         public int Id { get; set; }
         public string Brand { get; set; }
@@ -30,7 +30,7 @@ namespace CarRentingSystem.Models.Concretes
         public int CompanyId { get; set; }
 
         public Company Company { get; set; }
-        public List<RentInfo> PrevRentList { get; set; }
+        //public List<RentInfo> PrevRentList { get; set; }
 
     }
 }

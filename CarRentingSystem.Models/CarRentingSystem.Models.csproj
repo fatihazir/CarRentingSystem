@@ -46,7 +46,6 @@
     <Compile Include="Abstractions\Human.cs" />
     <Compile Include="Concretes\Manager.cs" />
     <Compile Include="Concretes\RentInfo.cs" />
-    <Compile Include="Concretes\ReservationInfo.cs" />
     <Compile Include="Concretes\Staff.cs" />
     <Compile Include="Abstractions\User.cs" />
     <Compile Include="Concretes\Vehicle.cs" />

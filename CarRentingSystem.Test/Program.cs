@@ -13,6 +13,7 @@ namespace CarRentingSystem.Test
         {
             
             DataContext db = new DataContext();
+            db.Customers.Add(new Customer());
             Console.WriteLine("Sunucumuz açıldı");
             Console.ReadKey();
  

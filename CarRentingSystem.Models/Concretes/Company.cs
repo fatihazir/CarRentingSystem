@@ -10,8 +10,8 @@ namespace CarRentingSystem.Models.Concretes
     {
         public Company()
         {
-            StaffList = new List<Staff>();
-            VehicleList = new List<Vehicle>();
+            //StaffList = new List<Staff>();
+            //VehicleList = new List<Vehicle>();
         }
         public int Id { get; set; }
         public string Name { get; set; }

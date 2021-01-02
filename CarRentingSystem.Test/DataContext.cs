@@ -10,17 +10,21 @@ namespace CarRentingSystem.Test
 {
     public class DataContext : DbContext 
     {
-        public DataContext() : base("CarRenting")
-        {
+        private static string nameOrConnectionString;
 
+        public DataContext() : base(nameOrConnectionString="CarRenting")
+        {
+            DataInitializer dataInitializer = new DataInitializer();
         }
+
+
+
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Manager> Managers { get; set; }
         public DbSet<RentInfo> Rents { get; set; }
-        public DbSet<ReservationInfo> Reservations { get; set; }
 
     }
 }
