@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using CarRentingSystem.DataAccess.Concretes;
+using CarRentingSystem.DataAccess.Abstraction;
+using CarRentingSystem.DataAccess.Entity;
+using CarRentingSystem.Models.Concretes;
+
 
 namespace CarRentingSystem.Test
 {
@@ -11,9 +15,10 @@ namespace CarRentingSystem.Test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Test Calisti..");
+            DbMain<Companies> repo = new DbMain<Companies>();;
+            var sonuc = repo.ListAll();
             Console.ReadKey();
-            CompanyRepository repo = new CompanyRepository();
+
         }
     }
 }

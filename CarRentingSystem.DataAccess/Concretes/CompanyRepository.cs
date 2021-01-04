@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CarRentingSystem.DataAccess.Abstraction;
-using CarRentingSystem.DBCreator;
+using CarRentingSystem.DataAccess.Entity;
 using CarRentingSystem.Models.Concretes;
 
 namespace CarRentingSystem.DataAccess.Concretes
 {
     public class CompanyRepository : IRepositoryMain<Company>, IDisposable
     {
+        
         public bool Insert(Company entity)
         {
             throw new NotImplementedException();
@@ -33,9 +34,7 @@ namespace CarRentingSystem.DataAccess.Concretes
 
         public IList<Company> SelectAll()
         {
-            DataContext db = new DataContext();
-            List<Company> companies = db.Companies.ToList();
-            return companies;
+            throw new NotImplementedException();
         }
 
         public void Dispose()

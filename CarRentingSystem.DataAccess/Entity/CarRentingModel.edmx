@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CarRentingSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Point" Type="tinyint" Nullable="false" />
+          <Property Name="PhoneNumber" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ManagerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="CityOfBirth" Type="nvarchar(max)" />
+          <Property Name="IdentityNumberOfCountry" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="BeginningDateOfLicense" Type="nvarchar(max)" />
+          <Property Name="EndingDateOfLicense" Type="nvarchar(max)" />
+          <Property Name="YearsOfLicenceUsed" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Managers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar(max)" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="CityOfBirth" Type="nvarchar(max)" />
+          <Property Name="IdentityNumberOfCountry" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="BeginningDateOfLicense" Type="nvarchar(max)" />
+          <Property Name="EndingDateOfLicense" Type="nvarchar(max)" />
+          <Property Name="YearsOfLicenceUsed" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RentInfoes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReqPending" Type="bit" Nullable="false" />
+          <Property Name="BeginningOfRenting" Type="datetime" Nullable="false" />
+          <Property Name="EndingOfRenting" Type="datetime" Nullable="false" />
+          <Property Name="VehicleId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staffs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar(max)" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="CityOfBirth" Type="nvarchar(max)" />
+          <Property Name="IdentityNumberOfCountry" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="BeginningDateOfLicense" Type="nvarchar(max)" />
+          <Property Name="EndingDateOfLicense" Type="nvarchar(max)" />
+          <Property Name="YearsOfLicenceUsed" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar(max)" />
+          <Property Name="ModelName" Type="nvarchar(max)" />
+          <Property Name="Plate" Type="nvarchar(max)" />
+          <Property Name="RequiredOldForLicence" Type="tinyint" Nullable="false" />
+          <Property Name="MinimumAgeLimit" Type="tinyint" Nullable="false" />
+          <Property Name="HaveAirbag" Type="bit" Nullable="false" />
+          <Property Name="VolumeOfLuggage" Type="tinyint" Nullable="false" />
+          <Property Name="AmountOfSeat" Type="tinyint" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Managers_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Managers" Type="Self.Managers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Managers">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RentInfoes_dbo_Customers_CustomerId">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RentInfoes" Type="Self.RentInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RentInfoes">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RentInfoes_dbo_Vehicles_VehicleId">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RentInfoes" Type="Self.RentInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RentInfoes">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Staffs_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Staffs" Type="Self.Staffs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staffs">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Vehicles_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CarRentingSystemModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Managers" EntityType="Self.Managers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentInfoes" EntityType="Self.RentInfoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staffs" EntityType="Self.Staffs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Managers_dbo_Companies_CompanyId" Association="Self.FK_dbo_Managers_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Managers" EntitySet="Managers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RentInfoes_dbo_Customers_CustomerId" Association="Self.FK_dbo_RentInfoes_dbo_Customers_CustomerId">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="RentInfoes" EntitySet="RentInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RentInfoes_dbo_Vehicles_VehicleId" Association="Self.FK_dbo_RentInfoes_dbo_Vehicles_VehicleId">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="RentInfoes" EntitySet="RentInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Staffs_dbo_Companies_CompanyId" Association="Self.FK_dbo_Staffs_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Staffs" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Vehicles_dbo_Companies_CompanyId" Association="Self.FK_dbo_Vehicles_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarRentingSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Point" Type="Byte" Nullable="false" />
+          <Property Name="PhoneNumber" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ManagerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Managers" Relationship="Self.FK_dbo_Managers_dbo_Companies_CompanyId" FromRole="Companies" ToRole="Managers" />
+          <NavigationProperty Name="Staffs" Relationship="Self.FK_dbo_Staffs_dbo_Companies_CompanyId" FromRole="Companies" ToRole="Staffs" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_dbo_Vehicles_dbo_Companies_CompanyId" FromRole="Companies" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CityOfBirth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityNumberOfCountry" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BeginningDateOfLicense" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EndingDateOfLicense" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YearsOfLicenceUsed" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="RentInfoes" Relationship="Self.FK_dbo_RentInfoes_dbo_Customers_CustomerId" FromRole="Customers" ToRole="RentInfoes" />
+        </EntityType>
+        <EntityType Name="Managers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CityOfBirth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityNumberOfCountry" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BeginningDateOfLicense" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EndingDateOfLicense" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YearsOfLicenceUsed" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_Managers_dbo_Companies_CompanyId" FromRole="Managers" ToRole="Companies" />
+        </EntityType>
+        <EntityType Name="RentInfoes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReqPending" Type="Boolean" Nullable="false" />
+          <Property Name="BeginningOfRenting" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndingOfRenting" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VehicleId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_dbo_RentInfoes_dbo_Customers_CustomerId" FromRole="RentInfoes" ToRole="Customers" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_dbo_RentInfoes_dbo_Vehicles_VehicleId" FromRole="RentInfoes" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Staffs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CityOfBirth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityNumberOfCountry" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BeginningDateOfLicense" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EndingDateOfLicense" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YearsOfLicenceUsed" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_Staffs_dbo_Companies_CompanyId" FromRole="Staffs" ToRole="Companies" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brand" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModelName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Plate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RequiredOldForLicence" Type="Byte" Nullable="false" />
+          <Property Name="MinimumAgeLimit" Type="Byte" Nullable="false" />
+          <Property Name="HaveAirbag" Type="Boolean" Nullable="false" />
+          <Property Name="VolumeOfLuggage" Type="Byte" Nullable="false" />
+          <Property Name="AmountOfSeat" Type="Byte" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_Vehicles_dbo_Companies_CompanyId" FromRole="Vehicles" ToRole="Companies" />
+          <NavigationProperty Name="RentInfoes" Relationship="Self.FK_dbo_RentInfoes_dbo_Vehicles_VehicleId" FromRole="Vehicles" ToRole="RentInfoes" />
+        </EntityType>
+        <Association Name="FK_dbo_Managers_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Managers" Type="Self.Managers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Managers">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Staffs_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Staffs" Type="Self.Staffs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staffs">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Vehicles_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RentInfoes_dbo_Customers_CustomerId">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RentInfoes" Type="Self.RentInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RentInfoes">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RentInfoes_dbo_Vehicles_VehicleId">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RentInfoes" Type="Self.RentInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RentInfoes">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CarRentingSystemContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" />
+          <EntitySet Name="Managers" EntityType="Self.Managers" />
+          <EntitySet Name="RentInfoes" EntityType="Self.RentInfoes" />
+          <EntitySet Name="Staffs" EntityType="Self.Staffs" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicles" />
+          <AssociationSet Name="FK_dbo_Managers_dbo_Companies_CompanyId" Association="Self.FK_dbo_Managers_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Managers" EntitySet="Managers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Staffs_dbo_Companies_CompanyId" Association="Self.FK_dbo_Staffs_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Staffs" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Vehicles_dbo_Companies_CompanyId" Association="Self.FK_dbo_Vehicles_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RentInfoes_dbo_Customers_CustomerId" Association="Self.FK_dbo_RentInfoes_dbo_Customers_CustomerId">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="RentInfoes" EntitySet="RentInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RentInfoes_dbo_Vehicles_VehicleId" Association="Self.FK_dbo_RentInfoes_dbo_Vehicles_VehicleId">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="RentInfoes" EntitySet="RentInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarRentingSystemModelStoreContainer" CdmEntityContainer="CarRentingSystemContext">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="CarRentingSystemModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="CarRentingSystemModel.Companies">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="CarRentingSystemModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="CityOfBirth" ColumnName="CityOfBirth" />
+                <ScalarProperty Name="IdentityNumberOfCountry" ColumnName="IdentityNumberOfCountry" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BeginningDateOfLicense" ColumnName="BeginningDateOfLicense" />
+                <ScalarProperty Name="EndingDateOfLicense" ColumnName="EndingDateOfLicense" />
+                <ScalarProperty Name="YearsOfLicenceUsed" ColumnName="YearsOfLicenceUsed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managers">
+            <EntityTypeMapping TypeName="CarRentingSystemModel.Managers">
+              <MappingFragment StoreEntitySet="Managers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="CityOfBirth" ColumnName="CityOfBirth" />
+                <ScalarProperty Name="IdentityNumberOfCountry" ColumnName="IdentityNumberOfCountry" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BeginningDateOfLicense" ColumnName="BeginningDateOfLicense" />
+                <ScalarProperty Name="EndingDateOfLicense" ColumnName="EndingDateOfLicense" />
+                <ScalarProperty Name="YearsOfLicenceUsed" ColumnName="YearsOfLicenceUsed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentInfoes">
+            <EntityTypeMapping TypeName="CarRentingSystemModel.RentInfoes">
+              <MappingFragment StoreEntitySet="RentInfoes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReqPending" ColumnName="ReqPending" />
+                <ScalarProperty Name="BeginningOfRenting" ColumnName="BeginningOfRenting" />
+                <ScalarProperty Name="EndingOfRenting" ColumnName="EndingOfRenting" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="CarRentingSystemModel.Staffs">
+              <MappingFragment StoreEntitySet="Staffs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="CityOfBirth" ColumnName="CityOfBirth" />
+                <ScalarProperty Name="IdentityNumberOfCountry" ColumnName="IdentityNumberOfCountry" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BeginningDateOfLicense" ColumnName="BeginningDateOfLicense" />
+                <ScalarProperty Name="EndingDateOfLicense" ColumnName="EndingDateOfLicense" />
+                <ScalarProperty Name="YearsOfLicenceUsed" ColumnName="YearsOfLicenceUsed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="CarRentingSystemModel.Vehicles">
+              <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+                <ScalarProperty Name="Plate" ColumnName="Plate" />
+                <ScalarProperty Name="RequiredOldForLicence" ColumnName="RequiredOldForLicence" />
+                <ScalarProperty Name="MinimumAgeLimit" ColumnName="MinimumAgeLimit" />
+                <ScalarProperty Name="HaveAirbag" ColumnName="HaveAirbag" />
+                <ScalarProperty Name="VolumeOfLuggage" ColumnName="VolumeOfLuggage" />
+                <ScalarProperty Name="AmountOfSeat" ColumnName="AmountOfSeat" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

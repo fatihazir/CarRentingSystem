@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CarRentingSystem.DataAccess.Abstraction;
-using CarRentingSystem.DBCreator;
 using CarRentingSystem.Models.Concretes;
 
 namespace CarRentingSystem.DataAccess.Concretes
