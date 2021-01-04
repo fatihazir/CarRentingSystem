@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CarRentingSystem.Models.Concretes
 {
@@ -10,9 +6,11 @@ namespace CarRentingSystem.Models.Concretes
     {
         public Company()
         {
-            //StaffList = new List<Staff>();
-            //VehicleList = new List<Vehicle>();
+            StaffList = new List<Staff>();
+            VehicleList = new List<Vehicle>();
+            ManagerList = new List<Manager>();
         }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
@@ -22,11 +20,8 @@ namespace CarRentingSystem.Models.Concretes
         public decimal PhoneNumber { get; set; }
         public int ManagerId { get; set; }
 
-
-
-        public Manager Manager { get; set; }
+        public List<Manager> ManagerList { get; set; }
         public List<Staff> StaffList { get; set; }
         public List<Vehicle> VehicleList { get; set; }
-
     }
 }

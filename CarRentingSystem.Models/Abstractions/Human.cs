@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CarRentingSystem.Models.Concretes
+﻿namespace CarRentingSystem.Models.Concretes
 {
     public abstract class Human
     {
-        public  string Name { get; set; }
+        public string Name { get; set; }
         public string Surname { get; set; }
         public string CityOfBirth { get; set; }
         public decimal IdentityNumberOfCountry { get; set; }

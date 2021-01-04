@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CarRentingSystem.Models.Concretes
+﻿namespace CarRentingSystem.Models.Concretes
 {
     public class Vehicle
     {
-        public Vehicle()
-        {
-           // PrevRentList = new List<RentInfo>();
-        }
         public int Id { get; set; }
         public string Brand { get; set; }
         public string ModelName { get; set; }
@@ -30,7 +19,5 @@ namespace CarRentingSystem.Models.Concretes
         public int CompanyId { get; set; }
 
         public Company Company { get; set; }
-        //public List<RentInfo> PrevRentList { get; set; }
-
     }
 }

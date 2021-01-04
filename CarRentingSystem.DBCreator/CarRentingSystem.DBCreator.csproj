@@ -5,10 +5,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E191AB84-ED70-4113-8B19-94D95AC7334D}</ProjectGuid>
+    <ProjectGuid>{1008093A-036D-4C95-A214-4A7E29BFDEAA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CarRentingSystem.Test</RootNamespace>
-    <AssemblyName>CarRentingSystem.Test</AssemblyName>
+    <RootNamespace>CarRentingSystem.DBCreator</RootNamespace>
+    <AssemblyName>CarRentingSystem.DBCreator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,9 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CarRentingSystem.Models">
-      <HintPath>..\CarRentingSystem.Models\bin\Debug\CarRentingSystem.Models.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -64,6 +61,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarRentingSystem.Models\CarRentingSystem.Models.csproj">
+      <Project>{91010ba3-e40f-4421-b6d2-dcf3229ee4a9}</Project>
+      <Name>CarRentingSystem.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
