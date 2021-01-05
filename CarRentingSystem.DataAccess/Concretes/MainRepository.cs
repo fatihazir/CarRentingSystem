@@ -5,16 +5,17 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using CarRentingSystem.DataAccess.Concretes;
 using CarRentingSystem.DataAccess.Entity;
 
 namespace CarRentingSystem.DataAccess.Abstraction
 {
-    public class DbMain<T> where T : class
+    public class MainRepository<T> : RepositoryBase, IRepositoryMain<T> where T : class
     {
-        private CarRentingSystemContext db = new CarRentingSystemContext();
+        
         private DbSet<T> DbSet;
 
-        public DbMain()
+        public MainRepository()
         {
             DbSet = db.Set<T>();
         }
@@ -29,14 +30,14 @@ namespace CarRentingSystem.DataAccess.Abstraction
             return DbSet.ToList();
         }
 
-        public List<T> List(Expression <Func<T,bool>> expression)
+        public List<T> ListAll(Expression<Func<T, bool>> expression)
         {
             return DbSet.Where(expression).ToList();
         }
 
         public T Find(int id)
         {
-            return  DbSet.Find(id);
+            return DbSet.Find(id);
         }
 
         public int Insert(T entity)
@@ -56,7 +57,14 @@ namespace CarRentingSystem.DataAccess.Abstraction
             return Save();
         }
 
+        public T Find(Expression<Func<T, bool>> expression)
+        {
+            return DbSet.FirstOrDefault(expression);
+        }
 
-
+        public IQueryable ListQueryable()
+        {
+            return DbSet.AsQueryable();
+        }
     }
 }

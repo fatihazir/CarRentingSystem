@@ -1,0 +1,1 @@
+﻿data access icindeki concretes klasörü altında main sınıfına disposible eklenecek. fonksiyonlar try catch ile çerçevelenecek.

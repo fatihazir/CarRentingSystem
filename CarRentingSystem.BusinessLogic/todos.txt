@@ -1,0 +1,4 @@
+﻿disposible eklenecek. fonksiyonlar try catch ile çerçevelenecek.
+dinamik interface olusturulup entegre edilecek.(insert, update, delete, selectbyid, list, list gibi ortak olacak fonksiyonları içermeli. )
+
+** varlık türlerine data access içindeki entity sınıfının türlerinden ulaşılacak. Models projesinden değil.

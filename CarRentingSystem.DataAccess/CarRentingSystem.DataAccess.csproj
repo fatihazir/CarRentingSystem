@@ -50,13 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstraction\DbMain.cs" />
+    <Compile Include="Concretes\MainRepository.cs" />
     <Compile Include="Abstraction\IRepositoryMain.cs" />
-    <Compile Include="Concretes\CompanyRepository.cs" />
-    <Compile Include="Concretes\CustomerRepository.cs" />
-    <Compile Include="Concretes\RentInfoRepository.cs" />
-    <Compile Include="Concretes\StaffRepository.cs" />
-    <Compile Include="Concretes\VehicleRepository.cs" />
+    <Compile Include="Abstraction\RepositoryBase.cs" />
     <Compile Include="Entity\CarRentingModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,6 +123,7 @@
       <DependentUpon>CarRentingModel.edmx</DependentUpon>
       <LastGenOutput>CarRentingModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Todos.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
