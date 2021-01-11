@@ -61,8 +61,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarRentingSystem.BusinessLogic\CarRentingSystem.BusinessLogic.csproj">
+      <Project>{4B8AABE2-2A1D-4EFB-837C-6E09C9CF3673}</Project>
+      <Name>CarRentingSystem.BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarRentingSystem.DataAccess\CarRentingSystem.DataAccess.csproj">
-      <Project>{4ec2e3e1-c15c-4f2b-aa49-8951603ca91d}</Project>
+      <Project>{4EC2E3E1-C15C-4F2B-AA49-8951603CA91D}</Project>
       <Name>CarRentingSystem.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>

@@ -15,14 +15,17 @@ namespace CarRentingSystem.DataAccess.Abstraction
 
         List<T> ListAll(Expression<Func<T, bool>> expression);
 
+        T Find(int id);
+
+        T Find(Expression<Func<T, bool>> expression);
+
         int Insert(T entity);
 
         int Update(T entity);
 
         int Remove(T entity);
 
-        T Find(Expression<Func<T, bool>> expression);
-        IQueryable ListQueryable();
+        
 
     }
 }

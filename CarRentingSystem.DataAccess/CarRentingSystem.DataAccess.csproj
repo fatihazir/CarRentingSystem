@@ -50,9 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concretes\MainRepository.cs" />
+    <Compile Include="Abstraction\Additional\ICompanyAdditionalRepository.cs" />
+    <Compile Include="Abstraction\MainRepository.cs" />
     <Compile Include="Abstraction\IRepositoryMain.cs" />
     <Compile Include="Abstraction\RepositoryBase.cs" />
+    <Compile Include="Concretes\CompanyRepository.cs" />
+    <Compile Include="Concretes\CustomerRepository.cs" />
+    <Compile Include="Concretes\ManagerRepository.cs" />
+    <Compile Include="Concretes\RentInfoRepository.cs" />
+    <Compile Include="Concretes\StaffRepository.cs" />
+    <Compile Include="Concretes\VehicleRepository.cs" />
     <Compile Include="Entity\CarRentingModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

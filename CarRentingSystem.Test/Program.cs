@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using CarRentingSystem.BusinessLogic.Concretes;
 using CarRentingSystem.DataAccess.Abstraction;
 using CarRentingSystem.DataAccess.Entity;
 
@@ -14,18 +15,9 @@ namespace CarRentingSystem.Test
     {
         static void Main(string[] args)
         {
-            MainRepository<Companies> companyRepo = new MainRepository<Companies>();
-            MainRepository<Vehicles> vehicleRepo = new MainRepository<Vehicles>();
-
 
             //tum sirketleri listeme
             //var sonuc = companyRepo.ListAll();
-
-
-
-
-
-
 
 
             //araba ekleme(sirketi ile beraber)
@@ -54,7 +46,20 @@ namespace CarRentingSystem.Test
 
 
             //sirket üzerinden arabaya ulaşma
-            var sonuc = companyRepo.Find(x => x.Id == 1).Vehicles.ToList();
+            CompanyBusiness companyBusiness = new CompanyBusiness();
+            //var comps = companyBusiness.ListCompanies(i => i.Id == 2);
+            //var comps = companyBusiness.FindCompany(i => i.Id == 2);
+            //var comp = companyBusiness.InsertCompany(new Companies(){Name = "blablab", Address = "Antakya", PhoneNumber = 555});
+            //var comp = companyBusiness.UpdateCompany(new Companies() { Name = "blablab", Address = "AntakyaUpdated", PhoneNumber = 555, Id = 6});
+            //var comp = companyBusiness.RemoveCompany(5);
+            //Companies comp = companyBusiness.FindCompany(2);
+            //comp.Name = "updated";
+            //var result = companyBusiness.UpdateCompany(comp);
+
+           
+            Vehicles tempVehicle = new Vehicles(){Brand = "Test2"};
+            companyBusiness.AddCarToCompany(1, tempVehicle);
+            var comp =companyBusiness.FindCompany(1);
             Console.ReadKey();
 
         }
