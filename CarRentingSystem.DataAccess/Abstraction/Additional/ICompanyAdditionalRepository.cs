@@ -17,5 +17,9 @@ namespace CarRentingSystem.DataAccess.Abstraction.Additional
 
         int RemoveManagerFromCompany(int companyId, Managers entity);
 
+        int AddStaffToCompany(int companyId, Staffs entity);
+
+        int RemoveStaffFromCompany(int companyId, Staffs entity);
+
     }
 }

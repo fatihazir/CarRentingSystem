@@ -60,42 +60,6 @@
     <Compile Include="Concretes\RentInfoRepository.cs" />
     <Compile Include="Concretes\StaffRepository.cs" />
     <Compile Include="Concretes\VehicleRepository.cs" />
-    <Compile Include="Entity\CarRentingModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CarRentingModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\CarRentingModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CarRentingModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\CarRentingModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CarRentingModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Companies.cs">
-      <DependentUpon>CarRentingModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Customers.cs">
-      <DependentUpon>CarRentingModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\C__MigrationHistory.cs">
-      <DependentUpon>CarRentingModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Managers.cs">
-      <DependentUpon>CarRentingModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\RentInfoes.cs">
-      <DependentUpon>CarRentingModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Staffs.cs">
-      <DependentUpon>CarRentingModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Vehicles.cs">
-      <DependentUpon>CarRentingModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,32 +68,17 @@
       <Name>CarRentingSystem.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Entity\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="Entity\CarRentingModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CarRentingModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Entity\CarRentingModel.edmx.diagram">
-      <DependentUpon>CarRentingModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Entity\CarRentingModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CarRentingModel.edmx</DependentUpon>
-      <LastGenOutput>CarRentingModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entity\CarRentingModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CarRentingModel.edmx</DependentUpon>
-      <LastGenOutput>CarRentingModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Todos.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

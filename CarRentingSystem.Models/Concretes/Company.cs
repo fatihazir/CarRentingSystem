@@ -6,9 +6,7 @@ namespace CarRentingSystem.Models.Concretes
     {
         public Company()
         {
-            StaffList = new List<Staff>();
             VehicleList = new List<Vehicle>();
-            ManagerList = new List<Manager>();
         }
 
         public int Id { get; set; }
@@ -18,10 +16,8 @@ namespace CarRentingSystem.Models.Concretes
         public ushort OwnedCars { get; set; }
         public byte Point { get; set; }
         public decimal PhoneNumber { get; set; }
-        public int ManagerId { get; set; }
+        public string PhotoLink { get; set; }
 
-        public List<Manager> ManagerList { get; set; }
-        public List<Staff> StaffList { get; set; }
         public List<Vehicle> VehicleList { get; set; }
     }
 }

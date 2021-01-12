@@ -56,10 +56,21 @@ namespace CarRentingSystem.Test
             //comp.Name = "updated";
             //var result = companyBusiness.UpdateCompany(comp);
 
-           
-            Vehicles tempVehicle = new Vehicles(){Brand = "Test2"};
-            companyBusiness.AddCarToCompany(1, tempVehicle);
-            var comp =companyBusiness.FindCompany(1);
+
+            //Vehicles tempVehicleAdd = new Vehicles() { Brand = "Test11" };
+            //var compBeforeee = companyBusiness.FindCompany(1);
+            //companyBusiness.AddCar(1, tempVehicleAdd);
+            //var comp = companyBusiness.FindCompany(1);
+
+            //var compBefore = companyBusiness.FindCompany(1);
+            //Vehicles tempVehicle = companyBusiness.FindCompany(1).Vehicles.FirstOrDefault();
+            //companyBusiness.RemoveCar(1, tempVehicle);
+            //var compAfter = companyBusiness.FindCompany(1);
+
+            //var result = companyBusiness.AddManager(1, new Managers(){Name = "for comp 1"});
+            DefaultDataBusiness defaultDataBusiness = new DefaultDataBusiness();
+            var rep = defaultDataBusiness.InitializeDefaultData();
+            var res = companyBusiness.FindCompany(1);
             Console.ReadKey();
 
         }

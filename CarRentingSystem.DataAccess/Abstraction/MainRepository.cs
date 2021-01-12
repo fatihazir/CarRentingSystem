@@ -11,9 +11,8 @@ using CarRentingSystem.DataAccess.Entity;
 
 namespace CarRentingSystem.DataAccess.Abstraction
 {
-    public abstract class MainRepository<T> : RepositoryBase, IRepositoryMain<T> where T : class //Disposible ekle
+    public abstract class MainRepository<T> : RepositoryBase, IRepositoryMain<T> where T : class
     {
-        
         private DbSet<T> DbSet;
 
         public MainRepository()

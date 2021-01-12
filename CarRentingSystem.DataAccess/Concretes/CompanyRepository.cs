@@ -9,11 +9,29 @@ using CarRentingSystem.DataAccess.Entity;
 
 namespace CarRentingSystem.DataAccess.Concretes
 {
-    public class CompanyRepository : MainRepository<Companies>, ICompanyAdditionalRepository
+    public class CompanyRepository : MainRepository<Companies>, ICompanyAdditionalRepository, IDisposable
     {
-        public void CompanyTest()
+        private bool _bDisposed;
+
+        public void Dispose()
         {
-            var x = 10;
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool bDisposing)
+        {
+            // Check the Dispose method called before.
+            if (!_bDisposed)
+            {
+                if (bDisposing)
+                {
+                    // Clean the resources used.
+                    db = null;
+                }
+
+                _bDisposed = true;
+            }
         }
 
         public override int Update(Companies entity)
@@ -30,11 +48,45 @@ namespace CarRentingSystem.DataAccess.Concretes
             return Remove(tempComp);
         }
 
-
         public int AddCarToCompany(int companyId, Vehicles entity)
         {
             Companies tempComp = Find(companyId);
             tempComp.Vehicles.Add(entity);
+            return Update(tempComp);
+        }
+
+        public int RemoveCarFromCompany(int companyId, Vehicles entity)
+        {
+            Companies tempComp = Find(companyId);
+            tempComp.Vehicles.Remove(entity);
+            return Update(tempComp);
+        }
+
+        public int AddManagerToCompany(int companyId, Managers entity)
+        {
+            Companies tempComp = Find(companyId);
+            tempComp.Managers.Add(entity);
+            return Update(tempComp);
+        }
+
+        public int RemoveManagerFromCompany(int companyId, Managers entity)
+        {
+            Companies tempComp = Find(companyId);
+            tempComp.Managers.Remove(entity);
+            return Update(tempComp);
+        }
+
+        public int AddStaffToCompany(int companyId, Staffs entity)
+        {
+            Companies tempComp = Find(companyId);
+            tempComp.Staffs.Add(entity);
+            return Update(tempComp);
+        }
+
+        public int RemoveStaffFromCompany(int companyId, Staffs entity)
+        {
+            Companies tempComp = Find(companyId);
+            tempComp.Staffs.Remove(entity);
             return Update(tempComp);
         }
     }

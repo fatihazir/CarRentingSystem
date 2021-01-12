@@ -11,8 +11,13 @@ using CarRentingSystem.DataAccess.Entity;
 
 namespace CarRentingSystem.BusinessLogic.Concretes
 {
-    public class CompanyBusiness
+    public class CompanyBusiness : IDisposable
     {
+        public void Dispose()
+        {
+            GC.SuppressFinalize(true);
+        }
+
         public List<Companies> ListCompanies()
         {
             CompanyRepository repo = new CompanyRepository();
@@ -73,7 +78,7 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             return isSuccess;
         }
 
-        public bool AddCarToCompany(int companyId, Vehicles entity)
+        public bool AddCar(int companyId, Vehicles entity)
         {
             bool isSuccess;
 
@@ -85,5 +90,40 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             return isSuccess;
         }
 
+        public bool RemoveCar(int companyId, Vehicles entity)
+        {
+            bool isSuccess;
+
+            CompanyRepository repo = new CompanyRepository();
+            int result = repo.RemoveCarFromCompany(companyId, entity);
+
+            _ = result == 1 ? isSuccess = true : isSuccess = false;
+
+            return isSuccess;
+        }
+
+        public bool AddManager(int companyId, Managers entity)
+        {
+            bool isSuccess;
+
+            CompanyRepository repo = new CompanyRepository();
+            int result = repo.AddManagerToCompany(companyId, entity);
+
+            _ = result == 1 ? isSuccess = true : isSuccess = false;
+
+            return isSuccess;
+        }
+
+        public bool RemoveManager(int companyId, Managers entity)
+        {
+            bool isSuccess;
+
+            CompanyRepository repo = new CompanyRepository();
+            int result = repo.RemoveManagerFromCompany(companyId, entity);
+
+            _ = result == 1 ? isSuccess = true : isSuccess = false;
+
+            return isSuccess;
+        }
     }
 }
