@@ -21,12 +21,12 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 new Companies()
                 {
                     Name = "Light Car",Address = "Taksim 55",City = "Istanbul", PhoneNumber = 02128542298
-                    ,Point = 0
+                    ,Point = 0,DatetimeOfCreated = DateTime.Now
                 },
                 new Companies()
                 {
                     Name = "Foreign Car",Address = "Center bla bla",City = "Riga", PhoneNumber = 3124158846
-                    ,Point = 1
+                    ,Point = 1, DatetimeOfCreated = DateTime.Now
                 }
             };
 

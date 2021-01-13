@@ -9,7 +9,7 @@ namespace CarRentingSystem.DataAccess.Concretes
 {
     public abstract class RepositoryBase
     {
-        protected static CarRentingSystemContext db;
+        protected static CarRentingSystemEntities db;
         private static object obje = new object();
 
         private static void CreateEntities()
@@ -18,7 +18,7 @@ namespace CarRentingSystem.DataAccess.Concretes
             {
                 lock (obje)
                 {
-                    db = new CarRentingSystemContext();
+                    db = new CarRentingSystemEntities();
                 }
 
             }

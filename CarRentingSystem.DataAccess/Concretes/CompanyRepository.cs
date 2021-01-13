@@ -38,7 +38,6 @@ namespace CarRentingSystem.DataAccess.Concretes
         {
             Companies tempComp = Find(entity.Id);
             tempComp = entity;
-
             return base.Update(tempComp);
         }
 

@@ -8,7 +8,7 @@ using CarRentingSystem.DataAccess.Entity;
 
 namespace CarRentingSystem.DataAccess.Concretes
 {
-    public class RentInfoRepository : MainRepository<RentInfoes>
+    public class RentInfoRepository : MainRepository<RentInfos>
     {
         public void RentInfoTest()
         {
