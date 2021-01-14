@@ -16,17 +16,52 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
         public bool InitializeDefaultData()
         {
+            List<Vehicles> vehicles = new List<Vehicles>()
+            {//dbye araba model yılı, yakıt tipi ekle.
+                new Vehicles()
+                {
+                    Brand = "Honda", ModelName = "Civic", AmoutOfSeat = 5, CurrentKm = 1000,DailyPrice = 40,DatetimeOfCreated = DateTime.Now,HaveAirBag = true,MinimumAgeLimit = 18,
+                    PhotoURL = "url",Plate = "48GG858",VolumeOfLuggage = 250,RequiredOldForLicense = 2
+                },
+                new Vehicles()
+                {
+                    Brand = "Toyota", ModelName = "Yaris", AmoutOfSeat = 5, CurrentKm = 40000,DailyPrice = 20,DatetimeOfCreated = DateTime.Now,HaveAirBag = true,MinimumAgeLimit = 18,
+                    PhotoURL = "url",Plate = "48GG847",VolumeOfLuggage = 270,RequiredOldForLicense = 3
+                },
+                new Vehicles()
+                {
+                    Brand = "Toyota", ModelName = "Corolla", AmoutOfSeat = 5, CurrentKm = 90000,DailyPrice = 60,DatetimeOfCreated = DateTime.Now,HaveAirBag = true,MinimumAgeLimit = 18,
+                    PhotoURL = "url",Plate = "47GG847",VolumeOfLuggage = 400,RequiredOldForLicense = 3
+                },
+                new Vehicles()
+                {
+                    Brand = "Opel", ModelName = "Astra", AmoutOfSeat = 5, CurrentKm = 180000,DailyPrice = 30,DatetimeOfCreated = DateTime.Now,HaveAirBag = true,MinimumAgeLimit = 18,
+                    PhotoURL = "url",Plate = "41GG858",VolumeOfLuggage = 150,RequiredOldForLicense = 4
+                },
+                new Vehicles()
+                {
+                    Brand = "Opel", ModelName = "Corsa", AmoutOfSeat = 5, CurrentKm = 280000,DailyPrice = 90,DatetimeOfCreated = DateTime.Now,HaveAirBag = true,MinimumAgeLimit = 18,
+                    PhotoURL = "url",Plate = "41GG858",VolumeOfLuggage = 150,RequiredOldForLicense = 5
+                },
+            };
+
+
             List<Companies> companies = new List<Companies>()
             {
                 new Companies()
                 {
                     Name = "Light Car",Address = "Taksim 55",City = "Istanbul", PhoneNumber = 02128542298
-                    ,Point = 0,DatetimeOfCreated = DateTime.Now
+                    ,Point = 0,DatetimeOfCreated = DateTime.Now,Vehicles = vehicles
                 },
                 new Companies()
                 {
                     Name = "Foreign Car",Address = "Center bla bla",City = "Riga", PhoneNumber = 3124158846
                     ,Point = 1, DatetimeOfCreated = DateTime.Now
+                },
+                new Companies()
+                {
+                    Name = "Fast car",Address = "Atina center",City = "Atina", PhoneNumber = 3124158846
+                    ,Point = 5, DatetimeOfCreated = DateTime.Now
                 }
             };
 

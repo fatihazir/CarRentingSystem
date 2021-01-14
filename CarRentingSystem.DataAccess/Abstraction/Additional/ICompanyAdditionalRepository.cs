@@ -13,13 +13,19 @@ namespace CarRentingSystem.DataAccess.Abstraction.Additional
 
         int RemoveCarFromCompany(int companyId, Vehicles entity);
 
+        List<Vehicles> ListCars(int companyId);
+
         int AddManagerToCompany(int companyId, Managers entity);
 
         int RemoveManagerFromCompany(int companyId, Managers entity);
 
+        List<Managers> ListManagers(int companyId);
+
         int AddStaffToCompany(int companyId, Staffs entity);
 
         int RemoveStaffFromCompany(int companyId, Staffs entity);
+
+        List<Staffs> ListStaff(int companyId);
 
     }
 }

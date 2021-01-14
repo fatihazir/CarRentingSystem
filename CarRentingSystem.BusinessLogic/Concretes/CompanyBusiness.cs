@@ -20,110 +20,284 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
         public List<Companies> ListCompanies()
         {
-            CompanyRepository repo = new CompanyRepository();
-            return repo.ListAll();
+            try
+            {
+                CompanyRepository repo = new CompanyRepository();
+                return repo.ListAll();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public List<Companies> ListCompanies(Expression<Func<Companies, bool>> expression)
-        {
-            CompanyRepository repo = new CompanyRepository();
-            return repo.ListAll(expression);
-        }
+        //public List<Companies> ListCompanies(Expression<Func<Companies, bool>> expression)
+        //{
+        //    try
+        //    {
+        //        CompanyRepository repo = new CompanyRepository();
+        //        return repo.ListAll(expression);
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
 
         public Companies FindCompany(int id)
         {
-            CompanyRepository repo = new CompanyRepository();
-            return repo.Find(id);
+            try
+            {
+                CompanyRepository repo = new CompanyRepository();
+                return repo.Find(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public Companies FindCompany(Expression<Func<Companies, bool>> expression)
-        {
-            CompanyRepository repo = new CompanyRepository();
-            return repo.Find(expression);
-        }
+        //public Companies FindCompany(Expression<Func<Companies, bool>> expression)
+        //{
+        //    try
+        //    {
+        //        CompanyRepository repo = new CompanyRepository();
+        //        return repo.Find(expression);
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
 
         public bool InsertCompany(Companies entity)
         {
-            bool isSuccess;
+            try
+            {
+                bool isSuccess;
 
-            CompanyRepository repo = new CompanyRepository();
-            int result =  repo.Insert(entity);
-            
-            _ = result == 1 ? isSuccess = true : isSuccess = false;
+                CompanyRepository repo = new CompanyRepository();
+                int result = repo.Insert(entity);
 
-            return isSuccess;
+                _ = result == 1 ? isSuccess = true : isSuccess = false;
+
+                return isSuccess;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool UpdateCompany(Companies entity)
         {
-            bool isSuccess;
+            try
+            {
+                bool isSuccess;
 
-            CompanyRepository repo = new CompanyRepository();
-            int result = repo.Update(entity);
+                CompanyRepository repo = new CompanyRepository();
+                int result = repo.Update(entity);
 
-            _ = result == 1 ? isSuccess = true : isSuccess = false;
+                _ = result == 1 ? isSuccess = true : isSuccess = false;
 
-            return isSuccess;
+                return isSuccess;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool RemoveCompany(int id)
         {
-            bool isSuccess;
+            try
+            {
+                bool isSuccess;
 
-            CompanyRepository repo = new CompanyRepository();
-            int result = repo.RemoveCompanyById(id);
+                CompanyRepository repo = new CompanyRepository();
+                int result = repo.RemoveCompanyById(id);
 
-            _ = result == 1 ? isSuccess = true : isSuccess = false;
+                _ = result == 1 ? isSuccess = true : isSuccess = false;
 
-            return isSuccess;
+                return isSuccess;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool AddCar(int companyId, Vehicles entity)
         {
-            bool isSuccess;
+            try
+            {
+                bool isSuccess;
 
-            CompanyRepository repo = new CompanyRepository();
-            int result = repo.AddCarToCompany(companyId, entity);
+                CompanyRepository repo = new CompanyRepository();
+                int result = repo.AddCarToCompany(companyId, entity);
 
-            _ = result == 1 ? isSuccess = true : isSuccess = false;
+                _ = result == 1 ? isSuccess = true : isSuccess = false;
 
-            return isSuccess;
+                return isSuccess;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool RemoveCar(int companyId, Vehicles entity)
         {
-            bool isSuccess;
+            //Car repoya ulasıp o arabayı da sil.
+            try
+            {
+                bool isSuccess;
 
-            CompanyRepository repo = new CompanyRepository();
-            int result = repo.RemoveCarFromCompany(companyId, entity);
+                CompanyRepository repo = new CompanyRepository();
+                int result = repo.RemoveCarFromCompany(companyId, entity);
 
-            _ = result == 1 ? isSuccess = true : isSuccess = false;
+                _ = result == 1 ? isSuccess = true : isSuccess = false;
 
-            return isSuccess;
+                return isSuccess;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
+
+        public List<Vehicles> ListCars(int companyId)
+        {
+            try
+            {
+                CompanyRepository repo = new CompanyRepository();
+                return repo.ListCars(companyId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
         public bool AddManager(int companyId, Managers entity)
         {
-            bool isSuccess;
+            try
+            {
+                bool isSuccess;
 
-            CompanyRepository repo = new CompanyRepository();
-            int result = repo.AddManagerToCompany(companyId, entity);
+                CompanyRepository repo = new CompanyRepository();
+                int result = repo.AddManagerToCompany(companyId, entity);
 
-            _ = result == 1 ? isSuccess = true : isSuccess = false;
+                _ = result == 1 ? isSuccess = true : isSuccess = false;
 
-            return isSuccess;
+                return isSuccess;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool RemoveManager(int companyId, Managers entity)
         {
-            bool isSuccess;
+            //manager repoya ulasıp managerı da sil.
+            try
+            {
+                bool isSuccess;
 
-            CompanyRepository repo = new CompanyRepository();
-            int result = repo.RemoveManagerFromCompany(companyId, entity);
+                CompanyRepository repo = new CompanyRepository();
+                int result = repo.RemoveManagerFromCompany(companyId, entity);
 
-            _ = result == 1 ? isSuccess = true : isSuccess = false;
+                _ = result == 1 ? isSuccess = true : isSuccess = false;
 
-            return isSuccess;
+                return isSuccess;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Managers> ListManagers(int companyId)
+        {
+            try
+            {
+                CompanyRepository repo = new CompanyRepository();
+                return repo.ListManagers(companyId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool AddStaff(int companyId, Staffs entity)
+        {
+            try
+            {
+                bool isSuccess;
+
+                CompanyRepository repo = new CompanyRepository();
+                int result = repo.AddStaffToCompany(companyId, entity);
+
+                _ = result == 1 ? isSuccess = true : isSuccess = false;
+
+                return isSuccess;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool RemoveStaff(int companyId, Staffs entity)
+        {
+            //manager repoya ulasıp managerı da sil.
+            try
+            {
+                bool isSuccess;
+
+                CompanyRepository repo = new CompanyRepository();
+                int result = repo.RemoveStaffFromCompany(companyId, entity);
+
+                _ = result == 1 ? isSuccess = true : isSuccess = false;
+
+                return isSuccess;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Staffs> ListStaff(int companyId)
+        {
+            try
+            {
+                CompanyRepository repo = new CompanyRepository();
+                return repo.ListStaff(companyId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
