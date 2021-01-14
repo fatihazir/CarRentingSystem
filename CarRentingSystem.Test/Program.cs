@@ -64,8 +64,11 @@ namespace CarRentingSystem.Test
             //Staffs tempStaff = new Staffs(){Name = "temp staff"};
             //var result = companyBusiness.AddStaff(5, tempStaff);
 
-            DefaultDataBusiness repo = new DefaultDataBusiness();
-            repo.InitializeDefaultData();
+            //DefaultDataBusiness repo = new DefaultDataBusiness();
+            //repo.InitializeDefaultData();
+
+            VehicleBusiness repo = new VehicleBusiness();
+           var temp =  repo.ListVehicles();
 
         }
     }

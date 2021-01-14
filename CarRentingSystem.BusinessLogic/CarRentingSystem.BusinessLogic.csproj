@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Concretes\CompanyBusiness.cs" />
     <Compile Include="Concretes\DefaultDataBusiness.cs" />
+    <Compile Include="Concretes\ManagerBusiness.cs" />
     <Compile Include="Concretes\VehicleBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

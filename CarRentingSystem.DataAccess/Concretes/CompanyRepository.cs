@@ -63,12 +63,16 @@ namespace CarRentingSystem.DataAccess.Concretes
             }
         }
 
-        public int AddCarToCompany(int companyId, Vehicles entity)
+        public int AddCarToCompany(int companyId, int vehicleId)
         {
             try
             {
                 Companies tempComp = Find(companyId);
-                tempComp.Vehicles.Add(entity);
+
+                VehicleRepository tempVehicleRepository = new VehicleRepository();
+                Vehicles tempCar = tempVehicleRepository.Find(vehicleId);
+
+                tempComp.Vehicles.Add(tempCar);
                 return Update(tempComp);
             }
             catch (Exception)
@@ -78,12 +82,16 @@ namespace CarRentingSystem.DataAccess.Concretes
             }
         }
 
-        public int RemoveCarFromCompany(int companyId, Vehicles entity)
+        public int RemoveCarFromCompany(int companyId, int vehicleId)
         {
             try
             {
                 Companies tempComp = Find(companyId);
-                tempComp.Vehicles.Remove(entity);
+
+                VehicleRepository tempVehicleRepository = new VehicleRepository();
+                Vehicles tempCar = tempVehicleRepository.Find(vehicleId);
+
+                tempComp.Vehicles.Remove(tempCar);
                 return Update(tempComp);
             }
             catch (Exception)
@@ -107,12 +115,16 @@ namespace CarRentingSystem.DataAccess.Concretes
             }
         }
 
-        public int AddManagerToCompany(int companyId, Managers entity)
+        public int AddManagerToCompany(int companyId, int managerId)
         {
             try
             {
                 Companies tempComp = Find(companyId);
-                tempComp.Managers.Add(entity);
+
+                ManagerRepository tempManagerRepository = new ManagerRepository();
+                Managers tempManager = tempManagerRepository.Find(managerId);
+
+                tempComp.Managers.Add(tempManager);
                 return Update(tempComp);
             }
             catch (Exception)
@@ -122,12 +134,16 @@ namespace CarRentingSystem.DataAccess.Concretes
             }
         }
 
-        public int RemoveManagerFromCompany(int companyId, Managers entity)
+        public int RemoveManagerFromCompany(int companyId, int managerId)
         {
             try
             {
                 Companies tempComp = Find(companyId);
-                tempComp.Managers.Remove(entity);
+
+                ManagerRepository tempManagerRepository = new ManagerRepository();
+                Managers tempManager = tempManagerRepository.Find(managerId);
+
+                tempComp.Managers.Remove(tempManager);
                 return Update(tempComp);
             }
             catch (Exception)
@@ -151,12 +167,16 @@ namespace CarRentingSystem.DataAccess.Concretes
             }
         }
 
-        public int AddStaffToCompany(int companyId, Staffs entity)
+        public int AddStaffToCompany(int companyId, int staffId)
         {
             try
             {
                 Companies tempComp = Find(companyId);
-                tempComp.Staffs.Add(entity);
+
+                StaffRepository tempStaffRepository = new StaffRepository();
+                Staffs tempStaff = tempStaffRepository.Find(staffId);
+
+                tempComp.Staffs.Add(tempStaff);
                 return Update(tempComp);
             }
             catch (Exception)
@@ -166,12 +186,16 @@ namespace CarRentingSystem.DataAccess.Concretes
             }
         }
 
-        public int RemoveStaffFromCompany(int companyId, Staffs entity)
+        public int RemoveStaffFromCompany(int companyId, int staffId)
         {
             try
             {
                 Companies tempComp = Find(companyId);
-                tempComp.Staffs.Remove(entity);
+
+                StaffRepository tempStaffRepository = new StaffRepository();
+                Staffs tempStaff = tempStaffRepository.Find(staffId);
+
+                tempComp.Staffs.Remove(tempStaff);
                 return Update(tempComp);
             }
             catch (Exception)

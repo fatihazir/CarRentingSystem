@@ -32,19 +32,6 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-        //public List<Companies> ListCompanies(Expression<Func<Companies, bool>> expression)
-        //{
-        //    try
-        //    {
-        //        CompanyRepository repo = new CompanyRepository();
-        //        return repo.ListAll(expression);
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
 
         public Companies FindCompany(int id)
         {
@@ -59,20 +46,6 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 throw;
             }
         }
-
-        //public Companies FindCompany(Expression<Func<Companies, bool>> expression)
-        //{
-        //    try
-        //    {
-        //        CompanyRepository repo = new CompanyRepository();
-        //        return repo.Find(expression);
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
 
         public bool InsertCompany(Companies entity)
         {
@@ -134,14 +107,14 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-        public bool AddCar(int companyId, Vehicles entity)
+        public bool AddCar(int companyId, int vehicleId)
         {
             try
             {
                 bool isSuccess;
 
                 CompanyRepository repo = new CompanyRepository();
-                int result = repo.AddCarToCompany(companyId, entity);
+                int result = repo.AddCarToCompany(companyId, vehicleId);
 
                 _ = result == 1 ? isSuccess = true : isSuccess = false;
 
@@ -154,7 +127,7 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-        public bool RemoveCar(int companyId, Vehicles entity)
+        public bool RemoveCar(int companyId, int vehicleId)
         {
             //Car repoya ulasıp o arabayı da sil.
             try
@@ -162,7 +135,7 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 bool isSuccess;
 
                 CompanyRepository repo = new CompanyRepository();
-                int result = repo.RemoveCarFromCompany(companyId, entity);
+                int result = repo.RemoveCarFromCompany(companyId, vehicleId);
 
                 _ = result == 1 ? isSuccess = true : isSuccess = false;
 
@@ -190,14 +163,14 @@ namespace CarRentingSystem.BusinessLogic.Concretes
         }
 
 
-        public bool AddManager(int companyId, Managers entity)
+        public bool AddManager(int companyId, int managerId)
         {
             try
             {
                 bool isSuccess;
 
                 CompanyRepository repo = new CompanyRepository();
-                int result = repo.AddManagerToCompany(companyId, entity);
+                int result = repo.AddManagerToCompany(companyId, managerId);
 
                 _ = result == 1 ? isSuccess = true : isSuccess = false;
 
@@ -210,7 +183,7 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-        public bool RemoveManager(int companyId, Managers entity)
+        public bool RemoveManager(int companyId, int managerId)
         {
             //manager repoya ulasıp managerı da sil.
             try
@@ -218,7 +191,7 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 bool isSuccess;
 
                 CompanyRepository repo = new CompanyRepository();
-                int result = repo.RemoveManagerFromCompany(companyId, entity);
+                int result = repo.RemoveManagerFromCompany(companyId, managerId);
 
                 _ = result == 1 ? isSuccess = true : isSuccess = false;
 
@@ -245,14 +218,14 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-        public bool AddStaff(int companyId, Staffs entity)
+        public bool AddStaff(int companyId, int staffId)
         {
             try
             {
                 bool isSuccess;
 
                 CompanyRepository repo = new CompanyRepository();
-                int result = repo.AddStaffToCompany(companyId, entity);
+                int result = repo.AddStaffToCompany(companyId, staffId);
 
                 _ = result == 1 ? isSuccess = true : isSuccess = false;
 
@@ -265,7 +238,7 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-        public bool RemoveStaff(int companyId, Staffs entity)
+        public bool RemoveStaff(int companyId, int staffId)
         {
             //manager repoya ulasıp managerı da sil.
             try
@@ -273,7 +246,7 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 bool isSuccess;
 
                 CompanyRepository repo = new CompanyRepository();
-                int result = repo.RemoveStaffFromCompany(companyId, entity);
+                int result = repo.RemoveStaffFromCompany(companyId, staffId);
 
                 _ = result == 1 ? isSuccess = true : isSuccess = false;
 

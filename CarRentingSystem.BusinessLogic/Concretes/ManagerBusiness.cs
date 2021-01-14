@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using CarRentingSystem.DataAccess.Concretes;
@@ -9,17 +8,18 @@ using CarRentingSystem.DataAccess.Entity;
 
 namespace CarRentingSystem.BusinessLogic.Concretes
 {
-    public class VehicleBusiness : IDisposable
+    public class ManagerBusiness : IDisposable
     {
         public void Dispose()
         {
             GC.SuppressFinalize(true);
         }
-        public List<Vehicles> ListVehicles()
+
+        public List<Managers> ListManagers() 
         {
             try
             {
-                VehicleRepository repo = new VehicleRepository();
+                ManagerRepository repo = new ManagerRepository();
                 return repo.ListAll();
             }
             catch (Exception)
@@ -29,13 +29,13 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-        public bool InsertVehicle(Vehicles entity)
+        public bool InsertManager(Managers entity)
         {
             try
             {
                 bool isSuccess;
 
-                VehicleRepository repo = new VehicleRepository();
+                ManagerRepository repo = new ManagerRepository();
                 int result = repo.Insert(entity);
 
                 _ = result == 1 ? isSuccess = true : isSuccess = false;
@@ -48,13 +48,13 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 throw;
             }
         }
-        public bool UpdateVehicle(Vehicles entity)
+        public bool UpdateManeger(Managers entity)
         {
             try
             {
                 bool isSuccess;
 
-                VehicleRepository repo = new VehicleRepository();
+                ManagerRepository repo = new ManagerRepository();
                 int result = repo.Update(entity);
 
                 _ = result == 1 ? isSuccess = true : isSuccess = false;
@@ -68,11 +68,11 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-        public Vehicles Find(int id)
+        public Managers Find(int id)
         {
             try
             {
-                VehicleRepository repo = new VehicleRepository();
+                ManagerRepository repo = new ManagerRepository();
                 return repo.Find(id);
             }
             catch (Exception)
@@ -86,8 +86,8 @@ namespace CarRentingSystem.BusinessLogic.Concretes
         {
             try
             {
-                VehicleRepository repo = new VehicleRepository();
-                return repo.RemoveVehicleById(id);
+                ManagerRepository repo = new ManagerRepository();
+                return repo.RemoveManagerById(id);
             }
             catch (Exception)
             {
