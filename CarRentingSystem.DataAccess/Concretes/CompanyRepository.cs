@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CarRentingSystem.Commons.Concretes.Helpers;
+using CarRentingSystem.Commons.Concretes.Logger;
 using CarRentingSystem.DataAccess.Abstraction;
 using CarRentingSystem.DataAccess.Abstraction.Additional;
 using CarRentingSystem.DataAccess.Entity;
@@ -42,10 +44,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 tempComp = entity;
                 return base.Update(tempComp);
             }
-            catch (Exception)
+            catch (Exception ex )
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::Update::Error occured.", ex);
             }
         }
 
@@ -56,10 +59,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 Companies tempComp = Find(id);
                 return Remove(tempComp);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::RemoveCompanyById::Error occured.", ex);
             }
         }
 
@@ -72,10 +76,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 tempComp.Vehicles.Add(entity);
                 return Update(tempComp);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::AddCarToCompany::Error occured.", ex);
             }
         }
 
@@ -91,10 +96,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 tempComp.Vehicles.Remove(tempCar);
                 return Update(tempComp);
             }
-            catch (Exception)
+            catch (Exception ex )
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::RemoveCarFromCompany::Error occured.", ex);
             }
         }
 
@@ -105,10 +111,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 Companies tempComp = Find(companyId);
                 return tempComp.Vehicles.ToList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::ListCars::Error occured.", ex);
             }
         }
 
@@ -124,10 +131,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 tempComp.Managers.Add(tempManager);
                 return Update(tempComp);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::AddManagerToCompany::Error occured.", ex);
             }
         }
 
@@ -143,10 +151,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 tempComp.Managers.Remove(tempManager);
                 return Update(tempComp);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::RemoveManagerFromCompany::Error occured.", ex);
             }
         }
 
@@ -157,10 +166,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 Companies tempComp = Find(companyId);
                 return tempComp.Managers.ToList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::ListManagers::Error occured.", ex);
             }
         }
 
@@ -195,10 +205,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 tempComp.Staffs.Remove(tempStaff);
                 return Update(tempComp);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::RemoveStaffFromCompany::Error occured.", ex);
             }
         }
 
@@ -209,10 +220,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 Companies tempComp = Find(companyId);
                 return tempComp.Staffs.ToList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::ListStaff::Error occured.", ex);
             }
         }
 
@@ -225,10 +237,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 return Update(tempComp);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::AddRentInfoToCompany::Error occured.", ex);
             }
         }
     }

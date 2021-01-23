@@ -4,6 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using CarRentingSystem.Commons.Concretes.Helpers;
+using CarRentingSystem.Commons.Concretes.Logger;
 using CarRentingSystem.DataAccess.Concretes;
 using CarRentingSystem.DataAccess.Entity;
 
@@ -22,10 +24,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 VehicleRepository repo = new VehicleRepository();
                 return repo.ListAll();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::VehicleBusiness::ListVehicle::Error occured.", ex);
             }
         }
 
@@ -42,10 +44,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::VehicleBusiness::UpdateVehicle::Error occured.", ex);
             }
         }
 
@@ -56,10 +58,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 VehicleRepository repo = new VehicleRepository();
                 return repo.Find(id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::VehicleBusiness::Find::Error occured.", ex);
             }
         }
 
@@ -76,10 +78,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::VehicleBusiness::Remove::Error occured.", ex);
             }
         }
     }

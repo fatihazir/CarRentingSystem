@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using CarRentingSystem.Commons.Concretes.Helpers;
+using CarRentingSystem.Commons.Concretes.Logger;
 using CarRentingSystem.DataAccess.Abstraction;
 using CarRentingSystem.DataAccess.Entity;
 
@@ -42,10 +44,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 tempVehicle = entity;
                 return base.Update(tempVehicle);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("VehicleRepository::RemoveManagerById::Error occured.", ex);
             }
         }
 
@@ -56,10 +59,11 @@ namespace CarRentingSystem.DataAccess.Concretes
                 Vehicles tempVehicle = Find(id);
                 return Remove(tempVehicle);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("VehicleRepository::RemoveManagerById::Error occured.", ex);
             }
         }
     }

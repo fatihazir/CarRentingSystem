@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CarRentingSystem.Commons.Concretes.Helpers;
+using CarRentingSystem.Commons.Concretes.Logger;
 using CarRentingSystem.DataAccess.Concretes;
 using CarRentingSystem.DataAccess.Entity;
 
@@ -27,10 +29,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CustomerBusiness::InsertCustomer::Error occured.", ex);
             }
         }
 
@@ -41,10 +43,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 CustomerRepository repo = new CustomerRepository();
                 return repo.Find(x => x.IdentificationNumber == identificationNumber);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CustomerBusiness::FindCustomerByIdentificationNumber::Error occured.", ex);
             }
         }
 

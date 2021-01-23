@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4B8AABE2-2A1D-4EFB-837C-6E09C9CF3673}</ProjectGuid>
+    <ProjectGuid>{41D1F2D7-D57C-4CED-BA4C-40934A81CAA8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CarRentingSystem.BusinessLogic</RootNamespace>
-    <AssemblyName>CarRentingSystem.BusinessLogic</AssemblyName>
+    <RootNamespace>CarRentingSystem.Commons</RootNamespace>
+    <AssemblyName>CarRentingSystem.Commons</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,23 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concretes\CompanyBusiness.cs" />
-    <Compile Include="Concretes\CustomerBusiness.cs" />
-    <Compile Include="Concretes\DefaultDataBusiness.cs" />
-    <Compile Include="Concretes\ManagerBusiness.cs" />
-    <Compile Include="Concretes\RentInfoBusiness.cs" />
-    <Compile Include="Concretes\VehicleBusiness.cs" />
+    <Compile Include="Abstractions\LogBase.cs" />
+    <Compile Include="Concretes\Helpers\ExceptionHelper.cs" />
+    <Compile Include="Concretes\Helpers\FileHelper.cs" />
+    <Compile Include="Concretes\Helpers\LogHelper.cs" />
+    <Compile Include="Concretes\Logger\DBLogger.cs" />
+    <Compile Include="Concretes\Logger\EventLogger.cs" />
+    <Compile Include="Concretes\Logger\FileLogger.cs" />
+    <Compile Include="Concretes\Logger\LogTarget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CarRentingSystem.Commons\CarRentingSystem.Commons.csproj">
-      <Project>{41d1f2d7-d57c-4ced-ba4c-40934a81caa8}</Project>
-      <Name>CarRentingSystem.Commons</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CarRentingSystem.DataAccess\CarRentingSystem.DataAccess.csproj">
-      <Project>{4ec2e3e1-c15c-4f2b-aa49-8951603ca91d}</Project>
-      <Name>CarRentingSystem.DataAccess</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

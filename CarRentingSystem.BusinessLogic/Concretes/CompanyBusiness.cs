@@ -5,6 +5,8 @@ using System.Linq.Expressions;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using CarRentingSystem.Commons.Concretes.Helpers;
+using CarRentingSystem.Commons.Concretes.Logger;
 using CarRentingSystem.DataAccess.Abstraction;
 using CarRentingSystem.DataAccess.Concretes;
 using CarRentingSystem.DataAccess.Entity;
@@ -25,10 +27,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 CompanyRepository repo = new CompanyRepository();
                 return repo.ListAll();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::List::Error occured.", ex);
             }
         }
 
@@ -40,10 +42,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 CompanyRepository repo = new CompanyRepository();
                 return repo.Find(id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::FindCompany::Error occured.", ex);
             }
         }
 
@@ -60,10 +62,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::InsertCompany::Error occured.", ex);
             }
         }
 
@@ -80,10 +82,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::UpdateCompany::Error occured.", ex);
             }
         }
 
@@ -100,10 +102,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::RemoveCompany::Error occured.", ex);
             }
         }
 
@@ -120,10 +122,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::AddCar::Error occured.", ex);
             }
         }
 
@@ -140,10 +142,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::RemoveCar::Error occured.", ex);
             }
         }
 
@@ -154,10 +156,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 CompanyRepository repo = new CompanyRepository();
                 return repo.ListCars(companyId);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::ListCars::Error occured.", ex);
             }
         }
 
@@ -175,10 +177,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::AddManager::Error occured.", ex);
             }
         }
 
@@ -196,10 +198,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::RemoveManager::Error occured.", ex);
             }
         }
 
@@ -210,10 +212,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 CompanyRepository repo = new CompanyRepository();
                 return repo.ListManagers(companyId);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::ListManagers::Error occured.", ex);
             }
         }
 
@@ -230,10 +232,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::AddStaff::Error occured.", ex);
             }
         }
 
@@ -251,10 +253,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::RemoveStaff::Error occured.", ex);
             }
         }
 
@@ -265,10 +267,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 CompanyRepository repo = new CompanyRepository();
                 return repo.ListStaff(companyId);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::ListStaff::Error occured.", ex);
             }
         }
 
@@ -285,10 +287,10 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
                 return isSuccess;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::AddRentInfo::Error occured.", ex);
             }
         }
     }
