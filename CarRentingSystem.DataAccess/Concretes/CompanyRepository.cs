@@ -63,16 +63,13 @@ namespace CarRentingSystem.DataAccess.Concretes
             }
         }
 
-        public int AddCarToCompany(int companyId, int vehicleId)
+        public int AddCarToCompany(int companyId,Vehicles entity)
         {
             try
             {
                 Companies tempComp = Find(companyId);
 
-                VehicleRepository tempVehicleRepository = new VehicleRepository();
-                Vehicles tempCar = tempVehicleRepository.Find(vehicleId);
-
-                tempComp.Vehicles.Add(tempCar);
+                tempComp.Vehicles.Add(entity);
                 return Update(tempComp);
             }
             catch (Exception)
@@ -211,6 +208,22 @@ namespace CarRentingSystem.DataAccess.Concretes
             {
                 Companies tempComp = Find(companyId);
                 return tempComp.Staffs.ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public int AddRentInfoToCompany(int companyId, RentInfos entity)
+        {
+            try
+            {
+                Companies tempComp = Find(companyId);
+                tempComp.RentInfos.Add(entity);
+                return Update(tempComp);
+
             }
             catch (Exception)
             {

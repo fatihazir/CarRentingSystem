@@ -29,25 +29,6 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-        public bool InsertVehicle(Vehicles entity)
-        {
-            try
-            {
-                bool isSuccess;
-
-                VehicleRepository repo = new VehicleRepository();
-                int result = repo.Insert(entity);
-
-                _ = result == 1 ? isSuccess = true : isSuccess = false;
-
-                return isSuccess;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
         public bool UpdateVehicle(Vehicles entity)
         {
             try
@@ -82,12 +63,18 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-        public int Remove(int id)
+        public bool Remove(int id)
         {
             try
             {
+                bool isSuccess;
+
                 VehicleRepository repo = new VehicleRepository();
-                return repo.RemoveVehicleById(id);
+                int result =  repo.RemoveVehicleById(id);
+
+                _ = result == 1 ? isSuccess = true : isSuccess = false;
+
+                return isSuccess;
             }
             catch (Exception)
             {

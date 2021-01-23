@@ -107,14 +107,14 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-        public bool AddCar(int companyId, int vehicleId)
+        public bool AddCar(int companyId, Vehicles entity)
         {
             try
             {
                 bool isSuccess;
 
                 CompanyRepository repo = new CompanyRepository();
-                int result = repo.AddCarToCompany(companyId, vehicleId);
+                int result = repo.AddCarToCompany(companyId,entity);
 
                 _ = result == 1 ? isSuccess = true : isSuccess = false;
 
@@ -129,7 +129,6 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
         public bool RemoveCar(int companyId, int vehicleId)
         {
-            //Car repoya ulasıp o arabayı da sil.
             try
             {
                 bool isSuccess;
@@ -265,6 +264,26 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             {
                 CompanyRepository repo = new CompanyRepository();
                 return repo.ListStaff(companyId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool AddRentnfo(int companyId, RentInfos entity)
+        {
+            try
+            {
+                bool isSuccess;
+
+                CompanyRepository repo = new CompanyRepository();
+                int result = repo.AddRentInfoToCompany(companyId, entity);
+
+                _ = result == 1 ? isSuccess = true : isSuccess = false;
+
+                return isSuccess;
             }
             catch (Exception)
             {

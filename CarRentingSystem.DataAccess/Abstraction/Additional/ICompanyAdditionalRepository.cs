@@ -9,7 +9,7 @@ namespace CarRentingSystem.DataAccess.Abstraction.Additional
 {
     public interface ICompanyAdditionalRepository
     {
-        int AddCarToCompany(int companyId, int vehicleId);
+        int AddCarToCompany(int companyId, Vehicles entity);
 
         int RemoveCarFromCompany(int companyId, int vehicleId);
 
@@ -26,6 +26,10 @@ namespace CarRentingSystem.DataAccess.Abstraction.Additional
         int RemoveStaffFromCompany(int companyId, int staffId);
 
         List<Staffs> ListStaff(int companyId);
+
+        int AddRentInfoToCompany(int companyId, RentInfos entity);
+
+
 
     }
 }

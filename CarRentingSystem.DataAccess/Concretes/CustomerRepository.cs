@@ -8,11 +8,29 @@ using CarRentingSystem.DataAccess.Entity;
 
 namespace CarRentingSystem.DataAccess.Concretes
 {
-    public class CustomerRepository : MainRepository<Customers>
+    public class CustomerRepository : MainRepository<Customers>, IDisposable
     {
-        public void CustomerTest()
+        private bool _bDisposed;
+
+        public void Dispose()
         {
-            var x = 10;
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool bDisposing)
+        {
+            // Check the Dispose method called before.
+            if (!_bDisposed)
+            {
+                if (bDisposing)
+                {
+                    // Clean the resources used.
+                    db = null;
+                }
+
+                _bDisposed = true;
+            }
         }
     }
 }
