@@ -98,18 +98,20 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-        public Managers Login(string username, string password)
+        public Managers GetEncryptedKey(string username)
         {
             try
             {
                 ManagerRepository repo = new ManagerRepository();
-                return repo.Login(username, password);
+                return repo.GetEncryptedKey(username);
             }
             catch (Exception ex)
             {
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
-                throw new Exception("BusinessLogic::ManagerBusiness::Login::Error occured.", ex);
+                throw new Exception("BusinessLogic::ManagerBusiness::GetEncKey::Error occured.", ex);
             }
         }
+
+       
     }
 }

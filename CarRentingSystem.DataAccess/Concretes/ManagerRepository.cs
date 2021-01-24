@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -67,19 +68,27 @@ namespace CarRentingSystem.DataAccess.Concretes
             }
         }
 
-        public Managers Login(string username, string password)
+        public Managers GetEncryptedKey(string username)
         {
             try
-            {
-                return Find(x => x.Username == username && x.Password == password);
-                
+            { 
+                Managers result = Find(x => x.Username == username);
+                Managers tempManager = new Managers()
+                {
+                    Id = result.Id,
+                    Password = result.Password
+                };
+
+                return tempManager;
+
             }
             catch (Exception ex)
             {
 
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
-                throw new Exception("ManagerRepository::Login::Error occured.", ex);
+                throw new Exception("ManagerRepository::GetEncKey::Error occured.", ex);
             }
         }
+
     }
 }

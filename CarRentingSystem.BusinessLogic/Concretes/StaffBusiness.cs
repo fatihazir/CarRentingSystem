@@ -30,19 +30,33 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 throw new Exception("BusinessLogic::ManagerBusiness::ListManagers::Error occured.", ex);
             }
         }
-
-        public Staffs Login(string username, string password)
+        public Staffs GetEncryptedKey(string username)
         {
             try
             {
                 StaffRepository repo = new StaffRepository();
-                return repo.Login(username, password);
+                return repo.GetEncryptedKey(username);
             }
             catch (Exception ex)
             {
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
-                throw new Exception("BusinessLogic::StaffBusiness::Login::Error occured.", ex);
+                throw new Exception("BusinessLogic::StaffBusiness::GetEncKey::Error occured.", ex);
             }
         }
+
+        public Staffs Find(int id)
+        {
+            try
+            {
+                StaffRepository repo = new StaffRepository();
+                return repo.Find(id);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::StaffBusiness::Find::Error occured.", ex);
+            }
+        }
+
     }
 }

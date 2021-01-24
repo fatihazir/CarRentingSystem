@@ -33,19 +33,27 @@ namespace CarRentingSystem.DataAccess.Concretes
                 _bDisposed = true;
             }
         }
-        public Staffs Login(string username, string password)
+        public Staffs GetEncryptedKey(string username)
         {
             try
             {
-                return Find(x => x.Username == username && x.Password == password);
-              
+                Staffs result = Find(x => x.Username == username);
+                Staffs tempStaff = new Staffs()
+                {
+                    Id = result.Id,
+                    Password = result.Password
+                };
+
+                return tempStaff;
+
             }
             catch (Exception ex)
             {
 
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
-                throw new Exception("StaffRepository::Login::Error occured.", ex);
+                throw new Exception("StaffRepository::GetEncKey::Error occured.", ex);
             }
         }
+       
     }
 }
