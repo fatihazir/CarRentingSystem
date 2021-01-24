@@ -97,5 +97,19 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 throw new Exception("BusinessLogic::ManagerBusiness::Remove::Error occured.", ex);
             }
         }
+
+        public Managers Login(string username, string password)
+        {
+            try
+            {
+                ManagerRepository repo = new ManagerRepository();
+                return repo.Login(username, password);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::ManagerBusiness::Login::Error occured.", ex);
+            }
+        }
     }
 }

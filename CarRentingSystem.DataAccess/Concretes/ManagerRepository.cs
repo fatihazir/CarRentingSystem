@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using CarRentingSystem.Commons.Concretes.Helpers;
 using CarRentingSystem.Commons.Concretes.Logger;
 using CarRentingSystem.DataAccess.Abstraction;
+using CarRentingSystem.DataAccess.Abstraction.Additional;
 using CarRentingSystem.DataAccess.Entity;
 
 namespace CarRentingSystem.DataAccess.Concretes
 {
-    public class ManagerRepository : MainRepository<Managers>, IDisposable
+    public class ManagerRepository : MainRepository<Managers>, IDisposable, Login<Managers>
     {
         private bool _bDisposed;
 
@@ -63,6 +64,21 @@ namespace CarRentingSystem.DataAccess.Concretes
 
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
                 throw new Exception("ManagerRepository::RemoveManagerById::Error occured.", ex);
+            }
+        }
+
+        public Managers Login(string username, string password)
+        {
+            try
+            {
+                return Find(x => x.Username == username && x.Password == password);
+                
+            }
+            catch (Exception ex)
+            {
+
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("ManagerRepository::Login::Error occured.", ex);
             }
         }
     }

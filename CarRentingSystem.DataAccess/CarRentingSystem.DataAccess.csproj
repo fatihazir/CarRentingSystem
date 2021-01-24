@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstraction\Additional\ICompanyAdditionalRepository.cs" />
+    <Compile Include="Abstraction\Additional\Login.cs" />
     <Compile Include="Abstraction\MainRepository.cs" />
     <Compile Include="Abstraction\IRepositoryMain.cs" />
     <Compile Include="Abstraction\RepositoryBase.cs" />
@@ -102,10 +103,6 @@
     <ProjectReference Include="..\CarRentingSystem.Commons\CarRentingSystem.Commons.csproj">
       <Project>{41d1f2d7-d57c-4ced-ba4c-40934a81caa8}</Project>
       <Name>CarRentingSystem.Commons</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CarRentingSystem.Models\CarRentingSystem.Models.csproj">
-      <Project>{91010ba3-e40f-4421-b6d2-dcf3229ee4a9}</Project>
-      <Name>CarRentingSystem.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
