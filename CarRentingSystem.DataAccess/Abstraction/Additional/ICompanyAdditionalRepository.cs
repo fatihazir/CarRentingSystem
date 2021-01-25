@@ -29,6 +29,8 @@ namespace CarRentingSystem.DataAccess.Abstraction.Additional
 
         int AddRentInfoToCompany(int companyId, RentInfos entity);
 
+        List<RentInfos> ListRentInfo(int companyId);
+
 
 
     }

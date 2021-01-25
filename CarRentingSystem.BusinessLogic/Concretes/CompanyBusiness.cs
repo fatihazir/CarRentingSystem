@@ -163,7 +163,6 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             }
         }
 
-
         public bool AddManager(int companyId, int managerId)
         {
             try
@@ -186,7 +185,7 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
         public bool RemoveManager(int companyId, int managerId)
         {
-            //manager repoya ulasıp managerı da sil.
+            
             try
             {
                 bool isSuccess;
@@ -241,7 +240,6 @@ namespace CarRentingSystem.BusinessLogic.Concretes
 
         public bool RemoveStaff(int companyId, int staffId)
         {
-            //manager repoya ulasıp managerı da sil.
             try
             {
                 bool isSuccess;
@@ -291,6 +289,20 @@ namespace CarRentingSystem.BusinessLogic.Concretes
             {
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
                 throw new Exception("BusinessLogic::CompanyBusiness::AddRentInfo::Error occured.", ex);
+            }
+        }
+
+        public List<RentInfos> ListRentInfos(int companyId)
+        {
+            try
+            {
+                CompanyRepository repo = new CompanyRepository();
+                return repo.ListRentInfo(companyId);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::CompanyBusiness::ListRentInfos::Error occured.", ex);
             }
         }
     }

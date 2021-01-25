@@ -186,10 +186,10 @@ namespace CarRentingSystem.DataAccess.Concretes
                 tempComp.Staffs.Add(tempStaff);
                 return Update(tempComp);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::AddStaffToCompany::Error occured.", ex);
             }
         }
 
@@ -244,5 +244,23 @@ namespace CarRentingSystem.DataAccess.Concretes
                 throw new Exception("CompanyRepository::AddRentInfoToCompany::Error occured.", ex);
             }
         }
+
+        public List<RentInfos> ListRentInfo(int companyId)
+        {
+            try
+            {
+                Companies tempComp = Find(companyId);
+
+                return tempComp.RentInfos.ToList();
+
+            }
+            catch (Exception ex)
+            {
+
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyRepository::ListRentInfo::Error occured.", ex);
+            }
+        }
+
     }
 }
