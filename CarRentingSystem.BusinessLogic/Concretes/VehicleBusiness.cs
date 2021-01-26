@@ -84,5 +84,22 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 throw new Exception("BusinessLogic::VehicleBusiness::Remove::Error occured.", ex);
             }
         }
+
+        public List<Vehicles> GetAvailableVehicles(DateTime starting, DateTime ending)
+        {
+            try
+            {
+                bool isSuccess;
+
+                VehicleRepository repo = new VehicleRepository();
+                return repo.FindAvailableCarBetweenDates(starting, ending);
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::VehicleBusiness::GetAvailableVehicles::Error occured.", ex);
+            }
+        }
     }
 }

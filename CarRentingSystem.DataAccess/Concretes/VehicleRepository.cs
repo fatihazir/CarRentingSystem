@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using CarRentingSystem.Commons.Concretes.Helpers;
@@ -64,6 +65,44 @@ namespace CarRentingSystem.DataAccess.Concretes
 
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
                 throw new Exception("VehicleRepository::RemoveManagerById::Error occured.", ex);
+            }
+        }
+
+        public List<Vehicles> FindAvailableCarBetweenDates(DateTime starting, DateTime ending)
+        {
+            try
+            {
+
+
+                RentInfoRepository rentInfoRepository = new RentInfoRepository();
+                var reservVehicles = rentInfoRepository.ListAll().Select(
+                    i => new
+                    {
+                        i.VehicleId,
+                        i.BeginningOfRenting,
+                        i.EndingOfRenting,
+                        i.IsRented
+                    }).Where(k => k.IsRented == true).ToList();
+
+                List<Vehicles> listOfAllVehicles =  ListAll();
+
+                bool matched = false;
+
+                foreach (var reservedVehicle in reservVehicles)
+                {
+                    if (reservedVehicle.EndingOfRenting < starting || reservedVehicle.BeginningOfRenting > ending )
+                    {
+                        listOfAllVehicles.Remove(Find(i => i.Id == reservedVehicle.VehicleId));
+                    }
+                }
+
+                return listOfAllVehicles;
+            }
+            catch (Exception ex)
+            {
+
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("VehicleRepository::FindAvailableCarBetweenDates::Error occured.", ex);
             }
         }
     }

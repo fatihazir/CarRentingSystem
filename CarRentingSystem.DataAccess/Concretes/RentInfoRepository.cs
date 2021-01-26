@@ -13,6 +13,7 @@ namespace CarRentingSystem.DataAccess.Concretes
     public class RentInfoRepository : MainRepository<RentInfos>, IDisposable
     {
         private bool _bDisposed;
+
         public void Dispose()
         {
             GC.SuppressFinalize(true);
@@ -65,7 +66,23 @@ namespace CarRentingSystem.DataAccess.Concretes
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
                 throw new Exception("RentInfoRepository::Confirm::Error occured.", ex);
             }
+
+
         }
 
+        public RentInfos GetRezInfoByCustomerIdentificatonNumber(int id)
+        {
+            try
+            {
+               return Find(x => x.Customers.IdentificationNumber == id);
+                
+            }
+            catch (Exception ex)
+            {
+
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("RentInfoRepository::GetRezInfo::Error occured.", ex);
+            }
+        }
     }
 }

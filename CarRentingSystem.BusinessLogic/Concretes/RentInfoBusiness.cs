@@ -72,5 +72,39 @@ namespace CarRentingSystem.BusinessLogic.Concretes
                 throw new Exception("BusinessLogic::RentInfoBusiness::Find::Error occured.", ex);
             }
         }
+
+        public List<RentInfos> ListALl(int id)
+        {
+            try
+            {
+                bool isSuccess;
+
+                RentInfoRepository repo = new RentInfoRepository();
+                return repo.ListAll();
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::RentInfoBusiness::ListAll::Error occured.", ex);
+            }
+        }
+
+        public RentInfos InfoForCustomer(int id)
+        {
+            try
+            {
+                bool isSuccess;
+
+                RentInfoRepository repo = new RentInfoRepository();
+                return repo.GetRezInfoByCustomerIdentificatonNumber(id);
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("BusinessLogic::RentInfoBusiness::InfoForCustomer::Error occured.", ex);
+            }
+        }
     }
 }
